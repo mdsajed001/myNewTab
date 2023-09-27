@@ -2,9 +2,9 @@
   "manifest_version": 3,
   "name": "Preact New Tab",
   "version": "1.0.0",
-  "description": "A Chrome extension that shows a Preact page on the new tab",
+  "description": "A Chrome extension that shows a custom page on the new tab",
   "action": {
-    "default_popup": "popup.html"
+    "default_popup": "index.html"
   },
   "chrome_url_overrides": {
     "newtab": "index.html"

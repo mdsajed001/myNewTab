@@ -1,33 +1,41 @@
-import { useState } from 'preact/hooks'
-import preactLogo from './assets/preact.svg'
-import viteLogo from '/vite.svg'
-import './app.css'
+import "./app.css";
+import { FiSearch } from "react-icons/fi";
 
 export function App() {
-  const [count, setCount] = useState(0)
-
+  const searchUrl = "https://www.google.com/search?q=";
+  const handleSearch = (event: Event) => {
+    event.preventDefault();
+    const form = event.target as HTMLFormElement;
+    const search = form.search.value;
+    window.location.href = `${searchUrl + search}`;
+  };
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} class="logo" alt="Vite logo" />
-        </a>
-        <a href="https://preactjs.com" target="_blank">
-          <img src={preactLogo} class="logo preact" alt="Preact logo" />
-        </a>
-      </div>
-      <h1>Vite + Preact</h1>
-      <div class="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/app.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p class="read-the-docs">
-        Click on the Vite and Preact logos to learn more
-      </p>
-    </>
-  )
+    <div className="h-[100dvh] w-screen bg-zinc-800">
+      <form
+        className="w-full h-full flex flex-col gap-6 justify-center items-center"
+        onSubmit={handleSearch}
+      >
+        <h1 className="text-orange-500 font-semibold text-3xl h-10">
+          Welcome to the{" "}
+          <span className="bg-orange-500 text-white rounded-lg p-2 hover:p-4 transition-all cursor-none hover:text-4xl">
+            Internet !
+          </span>
+        </h1>
+        <div className="flex gap-2 w-full justify-center">
+          <input
+            ref={(input) => input && input.focus()}
+            placeholder="Have a look around"
+            className="p-2 text-lg outline-none bg-white rounded-lg placeholder:text-orange-300 text-orange-600 w-1/2"
+            type="search"
+            name="search"
+            id="search"
+          />
+          <button className="bg-orange-500 text-lg p-2 rounded-lg text-white font-medium flex items-center gap-2">
+            <span>Search</span>
+            <FiSearch size={20} />
+          </button>
+        </div>
+      </form>
+    </div>
+  );
 }
