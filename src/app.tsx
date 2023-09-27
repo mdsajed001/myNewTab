@@ -1,5 +1,7 @@
 import "./app.css";
 import { FiSearch } from "react-icons/fi";
+import { MenuButton } from "./component/MenuButton";
+import { useEffect, useState } from "preact/hooks";
 
 export function App() {
   const searchUrl = "https://www.google.com/search?q=";
@@ -9,8 +11,19 @@ export function App() {
     const search = form.search.value;
     window.location.href = `${searchUrl + search}`;
   };
+  const [bgImage, setBgImage] = useState<string | null>("");
+  useEffect(() => {
+    setBgImage(localStorage.getItem("bg-image"));
+    console.log(localStorage.getItem("bg-image"));
+  }, []);
   return (
-    <div className="h-[100dvh] w-screen bg-zinc-800">
+    <div
+      style={{ backgroundImage: `url(${bgImage})` }}
+      className={`h-[100dvh] bg-center bg-cover w-screen ${
+        !bgImage && "bg-zinc-800"
+      }`}
+    >
+      <MenuButton />
       <form
         className="w-full h-full flex flex-col gap-6 justify-center items-center"
         onSubmit={handleSearch}
