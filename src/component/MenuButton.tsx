@@ -1,20 +1,21 @@
 import { CiMenuKebab } from "react-icons/ci";
-import { MdOutlineDeleteOutline, MdCancel } from "react-icons/md";
+import { MdOutlineDeleteOutline, MdCancel, MdLink } from "react-icons/md";
 import { AiOutlinePlus } from "react-icons/ai";
 import { useState } from "preact/hooks";
 export const MenuButton = () => {
   const [showMenu, setShowMenu] = useState(false);
   const [getBgImage, setGetBgImage] = useState(false);
+  const [storKey, setStorKey] = useState("bg-image");
   // handle bg image
   const handleBgImage = (event: Event) => {
     event.preventDefault();
     const form = event.target as HTMLFormElement;
     const bgImage = form.bgImage.value;
-    localStorage.setItem("bg-image", bgImage);
+    localStorage.setItem(storKey, bgImage);
   };
-  // rebove bg image
-  const removeBG = () => {
-    localStorage.removeItem("bg-image");
+  // remove bg image
+  const removeFromLocal = (key: string) => {
+    localStorage.removeItem(key);
   };
   return (
     <div className="absolute top-6 right-10">
@@ -30,6 +31,7 @@ export const MenuButton = () => {
           onClick={() => {
             setShowMenu(!showMenu);
             setGetBgImage(!getBgImage);
+            setStorKey("bg-image");
           }}
           className="flex items-center gap-4 font-medium w-60 justify-center"
         >
@@ -39,12 +41,33 @@ export const MenuButton = () => {
         <button
           onClick={() => {
             setShowMenu(!showMenu);
-            removeBG();
+            setGetBgImage(!getBgImage);
+            setStorKey("secret-link");
+          }}
+          className="flex items-center gap-4 font-medium w-60 justify-center"
+        >
+          <MdLink />
+          <span className="w-40">Secret Link</span>
+        </button>
+        <button
+          onClick={() => {
+            setShowMenu(!showMenu);
+            removeFromLocal("bg-image");
           }}
           className="text-red-500 gap-4 flex items-center font-medium w-60 justify-center"
         >
           <MdOutlineDeleteOutline />
           <span className="w-40">Remove Background</span>
+        </button>
+        <button
+          onClick={() => {
+            setShowMenu(!showMenu);
+            removeFromLocal("secret-link");
+          }}
+          className="text-red-500 gap-4 flex items-center font-medium w-60 justify-center"
+        >
+          <MdOutlineDeleteOutline />
+          <span className="w-40">Remove Secret Link</span>
         </button>
       </div>
       <div

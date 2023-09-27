@@ -4,6 +4,8 @@ import { MenuButton } from "./component/MenuButton";
 import { useEffect, useState } from "preact/hooks";
 
 export function App() {
+  const [secretLink, setSecretLink] = useState<null | string>("");
+  // search handler
   const searchUrl = "https://www.google.com/search?q=";
   const handleSearch = (event: Event) => {
     event.preventDefault();
@@ -11,8 +13,10 @@ export function App() {
     const search = form.search.value;
     window.location.href = `${searchUrl + search}`;
   };
+  // onload handle
   const [bgImage, setBgImage] = useState<string | null>("");
   useEffect(() => {
+    setSecretLink(localStorage.getItem("secret-link"));
     setBgImage(localStorage.getItem("bg-image"));
     console.log(localStorage.getItem("bg-image"));
   }, []);
@@ -30,9 +34,12 @@ export function App() {
       >
         <h1 className="text-orange-500 font-semibold text-3xl h-10">
           Welcome to the{" "}
-          <span className="bg-orange-500 text-white rounded-lg p-2 hover:p-4 transition-all cursor-none hover:text-4xl">
+          <a
+            href={`${secretLink}`}
+            className="bg-orange-500 text-white rounded-lg p-2 hover:p-4 transition-all cursor-none hover:text-4xl"
+          >
             Internet !
-          </span>
+          </a>
         </h1>
         <div className="flex gap-2 w-full justify-center">
           <input
