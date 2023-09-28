@@ -12,7 +12,7 @@ export const AddBookMark = ({
   return (
     <button
       onClick={() => setShowModal(!showModal)}
-      className="text-orange-500 text-2xl font-extrabold rounded-md p-2 border-2 border-orange-500"
+      className="text-orange-500 text-2xl font-extrabold rounded-md w-12 h-12 flex items-center justify-center border-2 border-orange-500"
     >
       <IoAddOutline />
     </button>
