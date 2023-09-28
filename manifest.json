@@ -3,9 +3,6 @@
   "name": "Preact New Tab",
   "version": "1.0.0",
   "description": "A Chrome extension that shows a custom page on the new tab",
-  "action": {
-    "default_popup": "index.html"
-  },
   "chrome_url_overrides": {
     "newtab": "index.html"
   }

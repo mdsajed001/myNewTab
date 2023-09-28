@@ -33,7 +33,7 @@ export const MenuButton = () => {
             setGetBgImage(!getBgImage);
             setStorKey("bg-image");
           }}
-          className="flex items-center gap-4 font-medium w-60 justify-center"
+          className="hover:bg-slate-300 rounded-lg p-2 flex items-center gap-4 font-medium w-60 justify-center"
         >
           <AiOutlinePlus />
           <span className="w-40">New Background</span>
@@ -44,7 +44,7 @@ export const MenuButton = () => {
             setGetBgImage(!getBgImage);
             setStorKey("secret-link");
           }}
-          className="flex items-center gap-4 font-medium w-60 justify-center"
+          className="hover:bg-slate-300 rounded-lg p-2 flex items-center gap-4 font-medium w-60 justify-center"
         >
           <MdLink />
           <span className="w-40">Secret Link</span>
@@ -54,7 +54,7 @@ export const MenuButton = () => {
             setShowMenu(!showMenu);
             removeFromLocal("bg-image");
           }}
-          className="text-red-500 gap-4 flex items-center font-medium w-60 justify-center"
+          className="hover:bg-slate-300 rounded-lg p-2 text-red-500 gap-4 flex items-center font-medium w-60 justify-center"
         >
           <MdOutlineDeleteOutline />
           <span className="w-40">Remove Background</span>
@@ -64,7 +64,7 @@ export const MenuButton = () => {
             setShowMenu(!showMenu);
             removeFromLocal("secret-link");
           }}
-          className="text-red-500 gap-4 flex items-center font-medium w-60 justify-center"
+          className="hover:bg-slate-300 rounded-lg p-2 text-red-500 gap-4 flex items-center font-medium w-60 justify-center"
         >
           <MdOutlineDeleteOutline />
           <span className="w-40">Remove Secret Link</span>
